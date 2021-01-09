@@ -35,8 +35,6 @@ class HolidayCommand extends commando.Command {
             //console.log(html);
 
             var HolidayElement = selector("body").find("div[class='card card--day card--alt linked']").first();
-            var test = HolidayElement.find("div[class='card__media card__image cover']");
-            var test2 = test[0];
             var holidayImageElement = HolidayElement.find("div[class='card__media card__image cover']").find("img");
             var holidayImageLink = holidayImageElement[0].attribs.src;
 
