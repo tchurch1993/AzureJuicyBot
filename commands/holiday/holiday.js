@@ -21,16 +21,22 @@ class HolidayCommand extends commando.Command {
 
         try {
             var date = new Date();
+            var year = date.getFullYear();
+            var month = ("0" + (date.getMonth() + 1)).slice(-2);
+            var day = ("0" + date.getDate()).slice(-2);
             var apiEndpoint = HOLIDAY_API_URL;
-            apiEndpoint += date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate();
+            apiEndpoint += year + "/" + month + "/" + day;
 
             var result = await fetch(apiEndpoint);
             //console.log(result);
             var html = await result.text();
+
             var selector = cheerio.load(html);
             //console.log(html);
 
             var HolidayElement = selector("body").find("div[class='card card--day card--alt linked']").first();
+            var test = HolidayElement.find("div[class='card__media card__image cover']");
+            var test2 = test[0];
             var holidayImageElement = HolidayElement.find("div[class='card__media card__image cover']").find("img");
             var holidayImageLink = holidayImageElement[0].attribs.src;
 
