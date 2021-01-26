@@ -23,5 +23,7 @@
       "american": "en-US",
       "australian": "en-AU"
   },
-  "tokEnabled": true
+  "tokEnabled": true,
+  "endpointEnabled": true,
+  "juicyBotWebsiteURL": "URL GOES HERE"
 }

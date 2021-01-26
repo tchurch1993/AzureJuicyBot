@@ -6,7 +6,7 @@ const fetch = require('node-fetch')
 
 const HOLIDAY_API_URL = "https://www.daysoftheyear.com/days/";
 
-//TODO: fix Holiday command becuase shit don't work
+
 class HolidayCommand extends commando.Command {
     constructor(bot) {
         super(bot, {

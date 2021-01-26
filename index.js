@@ -5,16 +5,18 @@ const {
   SQLiteProvider
 } = require('discord.js-commando');
 const sqlite = require('sqlite');
-const tok = require('./helpers/commandless/tok')
-const express = require('express');
+const tok = require('./helpers/commandless/tok');
+const {
+  openEndpoint
+} = require('./websiteIntegration/openEndpoint');
 
-var app = express();
-const port = 3001;
 // Here we load the config.json file that contains our token and our prefix values. 
 
 // config.token contains the bot's token
 // config.prefix contains the message prefix.
 const config = require("./config.json");
+
+
 
 // This is your client. Some people call it `bot`, some people call it `self`, 
 // some might call it `cootchie`. Either way, when you see `client.something`, or `bot.something`,
@@ -101,23 +103,12 @@ if (config.tokEnabled) {
   });
 }
 
-app.post('/', (req, res) => {
-  let channels = client.channels.cache
-  console.log("got a request!");
-  if (channels.has(req.query.channelId)) {
-    let channel = channels.get(req.query.channelId)
-    if (channel.isText()) {
-      channel.send("it work");
-    } else {
-      channel.join();
-    }
-  }
-  res.send('yo');
-});
+
 
 
 global.currentTeamMembers = [];
 global.queue = new Map();
+global.piano = new Map();
 global.servers = {};
 
 
@@ -141,6 +132,13 @@ global.servers = {};
 //   });
 
 client.login(config.token);
-app.listen(port, () => console.log('listening on port ' + port))
 
+//Open up endpoint to interact with bot through RESTful API
+if (config.endpointEnabled) {
+  try {
+    openEndpoint(client);
+  } catch (error) {
+    console.error(error);
+  }
+}
 //TODO: add silent game command where bot joins and leaves when someone speaks and then shames them in chat.
