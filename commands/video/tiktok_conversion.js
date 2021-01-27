@@ -36,7 +36,7 @@ class TokCommand extends commando.Command {
         })
         .then(async function (page) {
           await page.goto(TTDOWNLOADER_LINK + args);
-          
+
           //TODO: find a better way than to wait 10 seconds....Ultimatley would like to not use TTDownloader and find my own way tho.
           await delay(10000);
           var html = await page.content();
@@ -47,25 +47,35 @@ class TokCommand extends commando.Command {
           return pupObject;
         })
         .then(async function (pupObject) {
-          var html = pupObject.html;
-          var videoElement = $("a.download-link", html);
+          try {
+            var html = pupObject.html;
+            var videoElement = $("a.download-link", html);
 
-          if (videoElement) {
-            var videoLink = videoElement[0].attribs.href;
+            if (videoElement) {
+              var videoLink = videoElement[0].attribs.href;
 
-            var requestOptions = { url: videoLink, encoding: null };
-            request(requestOptions, (err, response, body) => {
+              var requestOptions = {
+                url: videoLink,
+                encoding: null
+              };
+              request(requestOptions, (err, response, body) => {
 
-              if (err) { return };
+                if (err) {
+                  return
+                };
 
-              const attachment = new MessageAttachment(body, filename);
+                const attachment = new MessageAttachment(body, filename);
 
-              message.channel.send(attachment);
-            })
+                message.channel.send(attachment);
+              })
 
-          } else {
-            console.log("could not find video link for: " + args);
+            } else {
+              console.log("could not find video link for: " + args);
+            }
+          } catch (error) {
+            consoler.error(error);
           }
+
         });
     } catch (e) {
       console.log(e);
