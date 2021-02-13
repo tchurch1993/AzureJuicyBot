@@ -11,7 +11,6 @@ function Play(connection, soundPath){
         console.log(error)
         connection.disconnect()
     }
-
 }
 
 

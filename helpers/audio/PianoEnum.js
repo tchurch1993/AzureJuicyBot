@@ -32,6 +32,4 @@ const PIANO_ENUM = {
     77: "C:/Users/tchur/Desktop/Piano Sounds/piano.ff.F5.aiff",
 }
 
-module.exports = {
-    PIANO_ENUM
-};
+module.exports = PIANO_ENUM;

@@ -54,10 +54,8 @@ class PianoCommand extends commando.Command {
 
         } else {
             if(args.includes("stop")){
-
-                var currentVoiceChannel = message.client.voice.connections.get(guildId).channel;
-
                 try {
+                    var currentVoiceChannel = message.client.voice.connections.get(guildId).channel;
                     await currentVoiceChannel.leave();
                 } catch (error) {
                     console.error(error);

@@ -16,6 +16,7 @@
     "better-sqlite3": "^5.4.3",
     "bufferutil": "^4.0.2",
     "cheerio": "^1.0.0-rc.5",
+    "cors": "^2.8.5",
     "discord.js": "^12.5.1",
     "discord.js-commando": "github:discordjs/commando",
     "express": "^4.17.1",
