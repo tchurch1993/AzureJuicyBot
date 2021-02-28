@@ -15,7 +15,7 @@ module.exports = function ValidateAndAddUser(member, callback) {
                     if(err){
                         console.error(err)
                     } else {
-                        console.log('Added new User: ' + newUser.UserId + "with GuildId: " + newUser.GuildId);
+                        console.log('Added new User: ' + newUser.UserId + " with GuildId: " + newUser.GuildId);
                         return callback(newUser)
                     }
                 });

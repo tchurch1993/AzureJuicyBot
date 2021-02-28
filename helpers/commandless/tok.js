@@ -1,5 +1,5 @@
 const config = require('../../config.json')
-const TokCommand = require('../../commands/video/tiktok_conversion')
+const TokCommand = require('../../commandoCommands/video/tiktok_conversion')
 
 module.exports = function tok(message, bot){
 
