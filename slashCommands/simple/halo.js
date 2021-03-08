@@ -1,8 +1,7 @@
 const {
     SlashCommand
 } = require('slash-create');
-const fs = require('fs');
-const haloFilePath = '../../../assets/files/halodialoge.txt';
+const getRandomHaloQuote = require('../../baseCommands/simple/halo_base');
 
 module.exports = class HaloCommand extends SlashCommand {
     constructor(creator) {
@@ -14,14 +13,10 @@ module.exports = class HaloCommand extends SlashCommand {
     }
 
     async run(ctx) {
-        let data = fs.readFileSync(__dirname + haloFilePath, 'utf8');
+        var haloQuote = getRandomHaloQuote();
 
-        try {
-            let haloQuoteArray = data.split("\n");
-            let randoNum = Math.floor(Math.random() * haloQuoteArray.length - 1);
-            return haloQuoteArray[randoNum];
-        } catch (error) {
-            console.error(error);
+        if (haloQuote) {
+            return haloQuote;
         }
 
     }

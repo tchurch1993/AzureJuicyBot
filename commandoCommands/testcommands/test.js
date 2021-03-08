@@ -9,6 +9,7 @@ class TestCommand extends commando.Command {
             memberName: 'test',
             description: 'Just a testy test commandy command',
             ownerOnly: true,
+            hidden: true
         })
     }
 

@@ -9,7 +9,7 @@ module.exports = class SayCommand extends SlashCommand {
             description: 'Repeats what you typed back at you!',
             options: [{
                 type: 3,
-                name: "phrase",
+                name: "message",
                 description: "what would you like the bot to say?",
                 required: true
             }]
@@ -18,6 +18,6 @@ module.exports = class SayCommand extends SlashCommand {
     }
 
     async run(ctx) {
-        return ctx.options.phrase;
+        return ctx.options.message;
     }
 }

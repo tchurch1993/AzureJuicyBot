@@ -1,10 +1,9 @@
 const commando = require('discord.js-commando');
-const config = require('../../config.json');
-const ValidateAndAddUser = require('../../database/helpers/userValidation')
+const setVoice = require('../../baseCommands/talk/set_talk_voice_base');
 
-class SetTalkVoiceCommand extends commando.Command {
-    constructor(bot){
-        super(bot,{
+module.exports = class SetTalkVoiceCommand extends commando.Command {
+    constructor(bot) {
+        super(bot, {
             name: 'setvoice',
             group: 'talk',
             memberName: 'setvoice',
@@ -14,19 +13,14 @@ class SetTalkVoiceCommand extends commando.Command {
     }
 
     //TODO: add a list of accents if their selection does not exist
-    async run(message, args){
+    async run(message, args) {
 
-        if(config.voicelist[args] != undefined){
-            ValidateAndAddUser(message.member, (user) => {
-                var voice = config.voicelist[args]
-                user.TalkVoice = voice
-                user.save();
-                message.channel.send(`Talk voice set to : ${args}`)
-            })
+        let isSuccessful = setVoice(args, message.member.id, message.guild.id);
+
+        if (isSuccessful) {
+            message.channel.send(`Talk voice set to : ${args}`);
         } else {
-            message.channel.send("sound not found")
+            message.channel.send("sound not found");
         }
     }
 }
-
-module.exports = SetTalkVoiceCommand;

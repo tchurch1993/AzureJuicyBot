@@ -21,6 +21,8 @@ class RandomPinCommand extends commando.Command {
             memberName: 'pin',
             description: 'displays random pinned message',
             guildOnly: true,
+            ownerOnly: true,
+            hidden: true
         })
     }
 

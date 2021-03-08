@@ -1,7 +1,6 @@
-const commando = require("discord.js-commando");
-const fetch = require("node-fetch");
-
-class DadJokeCommand extends commando.Command {
+const getDadJoke = require('../../baseCommands/funny/dadjokeBase');
+const { Command } = require('discord.js-commando');
+module.exports =  class DadJokeCommand extends Command {
     constructor(bot) {
         super(bot, {
             name: "dadjoke",
@@ -12,20 +11,9 @@ class DadJokeCommand extends commando.Command {
     }
 
     async run(message, args) {
-        try {
-            var result = await fetch("https://icanhazdadjoke.com/", {
-                method: "GET",
-                headers: {
-                    Accept: "application/json",
-                },
-            });
-            var text = await result.json();
-
-            message.channel.send(text.joke);
-        } catch {
-            message.channel.send("aww shit, somebody took a big ol' poopy");
+        var dadJoke = await getDadJoke();
+        if (dadJoke) {
+            message.channel.send(dadJoke);
         }
     }
 }
-
-module.exports = DadJokeCommand;

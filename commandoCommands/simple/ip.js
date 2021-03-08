@@ -11,7 +11,8 @@ class IPCommand extends commando.Command {
             name: 'ip',
             group: 'simple',
             memberName: 'ip',
-            description: 'grabs ip address of the server'
+            description: 'grabs ip address of the server',
+            hidden: true
         })
     }
 //TODO: maybe just take this command out entirely since it is just for my minecraft peoples
