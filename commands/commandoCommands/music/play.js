@@ -1,7 +1,7 @@
 const commando = require('discord.js-commando');
 const ytdl = require('ytdl-core');
-const GuildVolume = require('../../database/helpers/guildVolume')
-const validURL = require('../../helpers/util/util');
+const GuildVolume = require('../../../database/helpers/guildVolume')
+const validURL = require('../../../helpers/util/util');
 
 class PlayCommand extends commando.Command {
     constructor(bot){

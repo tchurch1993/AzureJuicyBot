@@ -1,7 +1,5 @@
 const commando = require("discord.js-commando");
-const mongoose = require("mongoose");
-const ValidateAndAddUser = require("../../database/helpers/userValidation");
-const UserModel = require('../../database/models/UserModel')
+const ValidateAndAddUser = require("../../../database/helpers/userValidation");
 
 class FishCommand extends commando.Command {
   constructor(bot) {

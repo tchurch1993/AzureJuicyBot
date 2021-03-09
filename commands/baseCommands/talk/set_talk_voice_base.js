@@ -1,5 +1,5 @@
-const config = require('../../config.json');
-const ValidateAndAddUser = require('../../database/helpers/userValidation')
+const config = require('../../../config.json');
+const ValidateAndAddUser = require('../../../database/helpers/userValidation');
 
 module.exports = async function setVoice(voiceName, memberId, guildId){
 

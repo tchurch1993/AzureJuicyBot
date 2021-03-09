@@ -2,7 +2,6 @@ const {
     SlashCommand
 } = require('slash-create');
 const getHolidayInfo = require('../../baseCommands/holiday/holidayBase');
-const discord = require('discord.js');
 
 module.exports = class HolidayCommand extends SlashCommand {
     constructor(creator) {

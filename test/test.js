@@ -1,8 +1,8 @@
 var assert = require('assert');
 var validURL = require('../helpers/util/util');
-var getDadJoke = require('../baseCommands/funny/dadjokeBase');
-var getGif = require('../baseCommands/gifs/memeBase');
-var getHolidayInfo = require('../baseCommands/holiday/holidayBase');
+var getDadJoke = require('../commands/baseCommands/funny/dadjokeBase');
+var getGif = require('../commands/baseCommands/gifs/memeBase');
+var getHolidayInfo = require('../commands/baseCommands/holiday/holidayBase');
 
 describe('funny', () => {
     describe('#getDadJoke()', () => {
@@ -28,7 +28,6 @@ describe('gifs', () => {
                 if (gifInfo) {
                     if (validURL(gifInfo)) {
                         done();
-                        assert.ok(gifInfo, "is a url!");
                     } else {
                         assert.fail("did not find any memes");
                     }

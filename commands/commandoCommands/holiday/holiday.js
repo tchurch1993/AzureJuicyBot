@@ -1,5 +1,4 @@
 const commando = require('discord.js-commando');
-const discord = require('discord.js');
 const getHolidayInfo = require('../../baseCommands/holiday/holidayBase');
 
 class HolidayCommand extends commando.Command {

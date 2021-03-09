@@ -1,4 +1,4 @@
-const haloFilePath = '../../../assets/files/halodialoge.txt';
+const haloFilePath = '../../../../assets/files/halodialoge.txt';
 const fs = require('fs');
 
 module.exports = function getRandomHaloQuote() {

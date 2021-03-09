@@ -1,5 +1,5 @@
 const commando = require('discord.js-commando');
-const GuildVolume = require('../../database/helpers/guildVolume');
+const GuildVolume = require('../../../database/helpers/guildVolume');
 
 class VolumeCommand extends commando.Command {
     constructor(bot){

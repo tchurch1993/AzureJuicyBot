@@ -1,5 +1,5 @@
 const Gyfcat = require('gfycat-sdk');
-const config = require('../../config.json');
+const config = require('../../../config.json');
 
 
 //TODO: find better API for gifs/memes

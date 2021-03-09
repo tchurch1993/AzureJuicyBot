@@ -37,7 +37,7 @@ const creator = new SlashCreator({
 creator.withServer(new GatewayServer(
     (handler) => client.ws.on('INTERACTION_CREATE', handler)
   ))
-  .registerCommandsIn(path.join(__dirname, "slashCommands"))
+  .registerCommandsIn(path.join(__dirname, "commands/slashCommands"))
   .syncCommands();
 
 sqlite.open(path.join(__dirname, "settings.sqlite3")).then((db) => {
@@ -60,7 +60,7 @@ client.registry
   ])
   .registerDefaultGroups()
   .registerDefaultCommands()
-  .registerCommandsIn(path.join(__dirname, "commandoCommands"));
+  .registerCommandsIn(path.join(__dirname, "commands/commandoCommands"));
 
 const mongoose = require("mongoose");
 

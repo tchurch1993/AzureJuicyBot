@@ -1,5 +1,5 @@
 const http = require('http');
-const config = require("./../../config.json");
+const config = require("./../../../config.json");
 
 module.exports = function getIp(memberId) {
     if (config.whiteList.includes(memberId)) {
