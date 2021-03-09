@@ -1,13 +1,9 @@
-''
-
 const commando = require('discord.js-commando');
-const fetch = require('node-fetch');
-const http = require('http');
-const config = require("./../../config.json");
+const getIp = require('../../baseCommands/simple/ip_base');
 
 class IPCommand extends commando.Command {
-    constructor(bot){
-        super(bot,{
+    constructor(bot) {
+        super(bot, {
             name: 'ip',
             group: 'simple',
             memberName: 'ip',
@@ -15,16 +11,12 @@ class IPCommand extends commando.Command {
             hidden: true
         })
     }
-//TODO: maybe just take this command out entirely since it is just for my minecraft peoples
-    async run(message, args){
-        if(config.whiteList.includes(message.author.id)){
-            http.get({'host': 'api.ipify.org', 'port': 80, 'path': '/'}, function(resp){
-                resp.on('data', function(ip){
-                    console.log("My Public IP address is: " + ip);
-                    message.author.send("The IP is " + ip + ":25565").then(message => console.log('Sent message: ${message.content}'))
-                        .catch(console.error);
-                })
-            })
+    //TODO: maybe just take this command out entirely since it is just for my minecraft peoples
+    async run(message, args) {
+
+        var ip = getIp(message.author.id);
+        if (ip) {
+            message.author.send("The IP is " + ip + ":25565");
         }
     }
 }

@@ -16,6 +16,7 @@ module.exports = class MemeCommand extends SlashCommand {
     }
 
     async run(ctx){
+        
         return getGif(ctx.options.query);
     }
 }

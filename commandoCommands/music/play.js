@@ -1,6 +1,7 @@
 const commando = require('discord.js-commando');
 const ytdl = require('ytdl-core');
 const GuildVolume = require('../../database/helpers/guildVolume')
+const validURL = require('../../helpers/util/util');
 
 class PlayCommand extends commando.Command {
     constructor(bot){
@@ -31,7 +32,7 @@ class PlayCommand extends commando.Command {
 
             let argArray = args.split(' ');
 
-            if(!this.validURL(argArray[0])){
+            if(!validURL(argArray[0])){
                 return message.channel.send("yo, this aint no URL. wtf man");
             }
             const songInfo = await ytdl.getInfo(argArray[0]);
@@ -94,16 +95,6 @@ class PlayCommand extends commando.Command {
         dispatcher.setVolumeLogarithmic(serverQueue.volume / 100);
         serverQueue.textChannel.send(`Start playing: **${song.title}**`);
       }
-
-    validURL(str) {
-		let pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
-		  '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
-		  '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
-		  '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
-		  '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
-		  '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
-		return !!pattern.test(str);
-	}
 }
 
 module.exports = PlayCommand;
